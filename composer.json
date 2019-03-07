@@ -1,0 +1,36 @@
+{
+    "name": "jameron/plaid",
+    "description": "Plaid API Wrapper",
+    "keywords": ["plaid"],
+    "homepage": "http://cjmacfarlane.com",
+    "license": "MIT",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Cameron Macfarlane",
+            "email": "cammac1984@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"Jameron\\": "src/"}
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/PlaidTest.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Jameron\\Plaid\\PlaidServiceProvider"
+            ],
+            "aliases": {
+                "Regulator": "Jameron\\Plaid\\Facades\\Facade"
+            }
+        }
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true
+    }
+}
