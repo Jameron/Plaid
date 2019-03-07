@@ -21,16 +21,34 @@ Let's see if we can't get you up and running in 10 steps. If you are starting fr
 composer update
 ```
 
-**NOTE  Laravel 5.5+ users there is auto-discovery so you can ignore steps 2 and 3
+**NOTE  Lumen only:
 
-2) Update your providers:
+2) Add the class alias to `bootstrap\app.php`
 
 ```php
-        Jameron\Plaid\PlaidServiceProvider::class,
+    if (!class_exists('Plaid2')) {
+        class_alias('Jameron\Plaid\Plaid', 'Plaid2');
+    }
 ```
 
-3) Update your Facades:
+3) Create a config file:
 
 ```php
-        'Plaid' => Jameron\Plaid\Facades\PlaidFacade::class,
+    app/config/plaid2.php
+```
+
+```php
+<?php
+
+return [
+    'baseUrl' => 'https://tartan.plaid.com/',
+    'client_id' => env('PLAID_CLIENT_ID'),
+    'secret' => env('PLAID_SECRET')
+];
+```
+
+4) Add the config to `bootstrap\app.php`
+
+```php
+$app->configure('plaid2');
 ```

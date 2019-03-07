@@ -15,12 +15,9 @@ class PlaidServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->publishes([
-            __DIR__.'/../config/plaid.php' => config_path('plaid.php'),
-	    ]);
     	$this->app->bind('Plaid2', function ($app) {
             return new \Jameron\Plaid\Plaid;
         });
-	
+
     }
 }
