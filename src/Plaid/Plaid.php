@@ -17,10 +17,6 @@ class Plaid
      */
     protected $config;
 
-    public static function test($username, $password, $institution) {
-        return self::addAuthUser($username, $password,null, $institution);
-    }
-
     /**
      * Initialize the Guzzle Client and make it ready for all requests
      */
@@ -30,27 +26,39 @@ class Plaid
     }
 
     /**
-     * [addAuthUser description]
-     * @method addAuthUser
-     * @param  [string]      $username [description]
-     * @param  [string]      $password [description]
-     * @param  [string]      $pin      [description]
-     * @param  [string]      $institutionId     [description]
+     * Exchange token, swaps a public token for access token.
+     * @method authGet
+     * @param string] $publicToken The public token.
      */
-    public static function addAuthUser($username, $password, $pin = null, $institutionId)
+    public static function exchangeToken($publicToken)
     {
         try {
-            $request = self::client()->post('auth', [
+            $request = self::client()->post('/item/public_token/exchange', [
                 'json' => [
                     'client_id' => config('plaid2.client_id'),
                     'secret' => config('plaid2.secret'),
-                    'username' => $username,
-                    'password' => $password,
-                    'pin' => $pin,
-                    'type' => $institutionId,
-                    'options' => [
-                        'list' => config('plaid.auth.list')
-                    ]
+                    'public_token' => $publicToken
+                ]
+            ]);
+            return json_decode($request->getBody(), true);
+        } catch (RequestException $e) {
+            return json_decode($e->getResponse()->getBody()->getContents(), true);
+        }
+    }
+
+    /**
+     * [authGet ]
+     * @method authGet
+     * @param  [string]      $accessToken [description]
+     */
+    public static function authGet($accessToken)
+    {
+        try {
+            $request = self::client()->post('/auth/get', [
+                'json' => [
+                    'client_id' => config('plaid2.client_id'),
+                    'secret' => config('plaid2.secret'),
+                    'access_token' => $accessToken
                 ]
             ]);
             return json_decode($request->getBody(), true);
