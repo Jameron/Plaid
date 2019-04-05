@@ -47,9 +47,30 @@ class Plaid
     }
 
     /**
-     * [authGet ]
-     * @method authGet
-     * @param  [string]      $accessToken [description]
+     * Get dat auth
+     * @param string $accessToken - The access token
+     */
+    public static function transactionsGet($accessToken)
+    {
+        try {
+            $request = self::client()->post('/transactions/get', [
+                'json' => [
+                    'client_id' => config('plaid2.client_id'),
+                    'secret' => config('plaid2.secret'),
+                    'access_token' => $accessToken,
+                    'start_date' => Carbon::now()->subDays(30)->format('Y-m-d'),
+                    'end_date' => Carbon::now()->format('Y-m-d')
+                ]
+            ]);
+            return json_decode($request->getBody(), true);
+        } catch (RequestException $e) {
+            return json_decode($e->getResponse()->getBody()->getContents(), true);
+        }
+    }
+
+    /**
+     * Get dat auth
+     * @param string $accessToken - The access token
      */
     public static function authGet($accessToken)
     {
