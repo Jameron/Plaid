@@ -35,8 +35,8 @@ class Plaid
         try {
             $request = self::client()->post('/item/public_token/exchange', [
                 'json' => [
-                    'client_id' => config('plaid2.client_id'),
-                    'secret' => config('plaid2.secret'),
+                    'client_id' => config('plaid.client_id'),
+                    'secret' => config('plaid.secret'),
                     'public_token' => $publicToken
                 ]
             ]);
@@ -55,8 +55,8 @@ class Plaid
         try {
             $request = self::client()->post('/transactions/get', [
                 'json' => [
-                    'client_id' => config('plaid2.client_id'),
-                    'secret' => config('plaid2.secret'),
+                    'client_id' => config('plaid.client_id'),
+                    'secret' => config('plaid.secret'),
                     'access_token' => $accessToken,
                     'start_date' => Carbon::now()->subDays(30)->format('Y-m-d'),
                     'end_date' => Carbon::now()->format('Y-m-d')
@@ -77,8 +77,29 @@ class Plaid
         try {
             $request = self::client()->post('/auth/get', [
                 'json' => [
-                    'client_id' => config('plaid2.client_id'),
-                    'secret' => config('plaid2.secret'),
+                    'client_id' => config('plaid.client_id'),
+                    'secret' => config('plaid.secret'),
+                    'access_token' => $accessToken
+                ]
+            ]);
+            return json_decode($request->getBody(), true);
+        } catch (RequestException $e) {
+            return json_decode($e->getResponse()->getBody()->getContents(), true);
+        }
+    }
+
+    /**
+     * Get plaid categories.
+     *
+     * @return json response body
+     */
+    public static function getCategories()
+    {
+        try {
+            $request = self::client()->post('/categories/get', [
+                'json' => [
+                    'client_id' => config('plaid.client_id'),
+                    'secret' => config('plaid.secret'),
                     'access_token' => $accessToken
                 ]
             ]);

@@ -25,7 +25,7 @@
                 "Jameron\\Plaid\\PlaidServiceProvider"
             ],
             "aliases": {
-                "Regulator": "Jameron\\Plaid\\Facades\\Facade"
+                "Plaid": "Jameron\\Plaid\\Facades\\Facade"
             }
         }
     },
