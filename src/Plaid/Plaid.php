@@ -22,7 +22,7 @@ class Plaid
      */
     public static function client()
     {
-        return new Guzzle(['base_uri' => config('plaid2.api_host')]);
+        return new Guzzle(['base_uri' => config('plaid.api_host')]);
     }
 
     /**
@@ -96,13 +96,7 @@ class Plaid
     public static function getCategories()
     {
         try {
-            $request = self::client()->post('/categories/get', [
-                'json' => [
-                    'client_id' => config('plaid.client_id'),
-                    'secret' => config('plaid.secret'),
-                    'access_token' => $accessToken
-                ]
-            ]);
+            $request = self::client()->post('/categories/get', []);
             return json_decode($request->getBody(), true);
         } catch (RequestException $e) {
             return json_decode($e->getResponse()->getBody()->getContents(), true);
