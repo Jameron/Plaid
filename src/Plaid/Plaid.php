@@ -96,7 +96,13 @@ class Plaid
     public static function getCategories()
     {
         try {
-            $request = self::client()->post('/categories/get', []);
+            $request = self::client()->post('/categories/get', [
+                'body'    => '{}',
+                'headers' => [
+                    'Content-Type'     => 'application/json',
+                ]
+            ]);
+
             return json_decode($request->getBody(), true);
         } catch (RequestException $e) {
             return json_decode($e->getResponse()->getBody()->getContents(), true);
