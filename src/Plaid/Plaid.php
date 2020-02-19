@@ -108,4 +108,24 @@ class Plaid
             return json_decode($e->getResponse()->getBody()->getContents(), true);
         }
     }
+
+    /**
+     * Remove an item
+     * @param string $accessToken - The access token
+     */
+    public static function removeItem($accessToken)
+    {
+        try {
+            $request = self::client()->post('/item/remove', [
+                'json' => [
+                    'client_id' => config('plaid.client_id'),
+                    'secret' => config('plaid.secret'),
+                    'access_token' => $accessToken
+                ]
+            ]);
+            return json_decode($request->getBody(), true);
+        } catch (RequestException $e) {
+            return json_decode($e->getResponse()->getBody()->getContents(), true);
+        }
+    }
 }

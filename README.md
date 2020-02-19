@@ -8,14 +8,6 @@ This package has been built to work with Laravel 5.4.33 and later. (Some older v
 ```json
     composer require jameron/plaid
 ```
-1a) or manually update your composer.json file
-
-```json
-    "jameron/plaid": "*",
-```
-```
-composer update
-```
 
 **NOTE  Lumen only:
 
