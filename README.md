@@ -1,7 +1,7 @@
 # plaid
 Plaid API wrapper
 
-This package has been built to work with Laravel 5.4.33 and later. (Some older versions of Laravel may not be compatible.)
+This package has been built to work with Laravel 8.15 and later. (Some older versions of Laravel may not be compatible.)
 
 1) Add the package to your Laravel or Lumen project:
 
@@ -14,15 +14,15 @@ This package has been built to work with Laravel 5.4.33 and later. (Some older v
 2) Add the class alias to `bootstrap\app.php`
 
 ```php
-    if (!class_exists('Plaid2')) {
-        class_alias('Jameron\Plaid\Plaid', 'Plaid2');
+    if (!class_exists('Plaid')) {
+        class_alias('Plaid\Plaid', 'Plaid');
     }
 ```
 
 3) Create a config file:
 
 ```php
-    app/config/plaid2.php
+    app/config/plaid.php
 ```
 
 ```php
@@ -38,5 +38,5 @@ return [
 4) Add the config to `bootstrap\app.php`
 
 ```php
-$app->configure('plaid2');
+$app->configure('plaid');
 ```
