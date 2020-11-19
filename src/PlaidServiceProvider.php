@@ -16,7 +16,7 @@ class PlaidServiceProvider extends ServiceProvider
     public function boot()
     {
     	$this->app->bind('Plaid', function ($app) {
-            return new \Plaid\Plaid;
+            return new Plaid\Plaid;
         });
 
     }
