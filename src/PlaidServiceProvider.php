@@ -1,6 +1,6 @@
 <?php
 
-namespace Jameron\Plaid;
+namespace Plaid;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -16,7 +16,7 @@ class PlaidServiceProvider extends ServiceProvider
     public function boot()
     {
     	$this->app->bind('Plaid', function ($app) {
-            return new \Jameron\Plaid\Plaid;
+            return new \Plaid\Plaid;
         });
 
     }
