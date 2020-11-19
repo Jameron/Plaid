@@ -22,7 +22,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Plaid\\PlaidServiceProvider"
+                "Jameron\\Plaid\\PlaidServiceProvider"
             ],
             "aliases": {
                 "Plaid": "Plaid\\Facades\\Facade"
