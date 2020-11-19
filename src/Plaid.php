@@ -1,6 +1,6 @@
 <?php
 
-namespace Plaid;
+namespace Jameron\Plaid;
 
 use Carbon\Carbon;
 use GuzzleHttp\Client as Guzzle;

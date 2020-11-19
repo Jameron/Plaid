@@ -1,6 +1,6 @@
 <?php
 
-namespace Plaid;
+namespace Jameron\Plaid;
 
 use Illuminate\Support\ServiceProvider;
 
