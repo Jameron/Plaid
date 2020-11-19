@@ -12,7 +12,7 @@
         }
     ],
     "autoload": {
-        "psr-4": {"Jameron\\": "src/"}
+        "psr-4": {"Jameron\\Plaid\\": "src/"}
     },
     "autoload-dev": {
         "classmap": [
