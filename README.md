@@ -1,7 +1,7 @@
 # plaid
-Plaid API wrapper
+Plaid SDK PHP
 
-This package has been built to work with Laravel 8.15 and later. (Some older versions of Laravel may not be compatible.)
+This package has been built to work with Laravel.
 
 1) Add the package to your Laravel or Lumen project:
 
@@ -11,7 +11,7 @@ This package has been built to work with Laravel 8.15 and later. (Some older ver
 
 **NOTE  Lumen only:
 
-2) Add the class alias to `bootstrap\app.php`
+2) If using Lumen add the class alias to `bootstrap\app.php`
 
 ```php
     if (!class_exists('Plaid')) {
@@ -35,7 +35,7 @@ return [
 ];
 ```
 
-4) Add the config to `bootstrap\app.php`
+4) If using Lumen add the config to `bootstrap\app.php`
 
 ```php
 $app->configure('plaid');
