@@ -1,5 +1,4 @@
-# plaid
-Plaid SDK PHP
+# Plaid SDK in PHP
 
 This package has been built to work with Laravel.
 
