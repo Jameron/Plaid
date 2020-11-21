@@ -8,10 +8,10 @@ This package has been built to work with Laravel.
     composer require jameron/plaid
 ```
 
-2) Laravel users need to update your Facades list
+2) Laravel users no need to update your Facades list, it is handled automatically.
 
 ```php
-'Regulator' => Jameron\Regulator\Facades\RegulatorFacade::class,
+'Plaid' => Jameron\Plaid\PlaidFacade::class,
 ```
 
 **NOTE  Lumen only:
