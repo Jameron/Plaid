@@ -8,9 +8,15 @@ This package has been built to work with Laravel.
     composer require jameron/plaid
 ```
 
+2) Laravel users need to update your Facades list
+
+```php
+'Regulator' => Jameron\Regulator\Facades\RegulatorFacade::class,
+```
+
 **NOTE  Lumen only:
 
-2) If using Lumen add the class alias to `bootstrap\app.php`
+If using Lumen add the class alias to `bootstrap\app.php`
 
 ```php
     if (!class_exists('Plaid')) {
@@ -18,23 +24,23 @@ This package has been built to work with Laravel.
     }
 ```
 
-3) Create a config file:
+3) Add PLAID_CLIENT_ID, PLAID_SECRET to your .env file and then create a config file:
 
 ```php
-    app/config/plaid.php
+    config/plaid.php
 ```
 
 ```php
 <?php
 
 return [
-    'baseUrl' => 'https://tartan.plaid.com/',
+    'api_host'  => 'https://development.plaid.com/',
     'client_id' => env('PLAID_CLIENT_ID'),
-    'secret' => env('PLAID_SECRET')
+    'secret'    => env('PLAID_SECRET')
 ];
 ```
 
-4) If using Lumen add the config to `bootstrap\app.php`
+If using Lumen add the config to `bootstrap\app.php`
 
 ```php
 $app->configure('plaid');
