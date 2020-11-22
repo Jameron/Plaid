@@ -3,6 +3,7 @@
 namespace Jameron\Plaid;
 
 use Illuminate\Support\ServiceProvider;
+use Jameron\Plaid\Plaid;
 
 class PlaidServiceProvider extends ServiceProvider
 {
