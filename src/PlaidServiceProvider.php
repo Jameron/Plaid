@@ -10,15 +10,26 @@ class PlaidServiceProvider extends ServiceProvider
     protected $package = 'plaid';
 
     /**
-     * Bootstrap the application services.
+     * Register services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+    	$this->app->bind(Plaid::class, function ($app) {
+            return new Plaid;
+        });
+    }
+
+    /**
+     * Bootstrap services.
      *
      * @return void
      */
     public function boot()
     {
-    	$this->app->bind('Plaid', function ($app) {
-            return new Plaid;
-        });
-
+        $this->publishes([
+            __DIR__.'/config/plaid.php' => config_path('plaid.php'),
+        ]);
     }
 }

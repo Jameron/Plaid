@@ -24,11 +24,13 @@ If using Lumen add the class alias to `bootstrap\app.php`
     }
 ```
 
-3) Add PLAID_CLIENT_ID, PLAID_SECRET to your .env file and then create a config file:
+3) Add PLAID_CLIENT_ID, PLAID_SECRET to your .env file and then publish (this copies the config file from the vendor directory to the laravel config/ directory) the config file:
 
 ```php
-    config/plaid.php
+    php artisan vendor:publish
 ```
+
+config/plaid.php
 
 ```php
 <?php
