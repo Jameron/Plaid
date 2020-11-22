@@ -17,7 +17,7 @@ class PlaidServiceProvider extends ServiceProvider
     public function register()
     {
     	$this->app->bind(Plaid::class, function ($app) {
-            return new Plaid;
+            return new Plaid();
         });
     }
 

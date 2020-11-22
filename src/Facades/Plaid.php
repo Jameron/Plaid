@@ -1,8 +1,8 @@
-<?php namespace Jameron\Plaid;
+<?php namespace Jameron\Plaid\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class PlaidFacade extends Facade
+class Plaid extends Facade
 {
 
     /**
