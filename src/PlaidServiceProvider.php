@@ -7,8 +7,6 @@ use Jameron\Plaid\Plaid;
 
 class PlaidServiceProvider extends ServiceProvider
 {
-    protected $package = 'plaid';
-
     /**
      * Register services.
      *
