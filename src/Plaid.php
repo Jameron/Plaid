@@ -27,8 +27,7 @@ class Plaid
 
     /**
      * Exchange token, swaps a public token for access token.
-     * @method authGet
-     * @param string] $publicToken The public token.
+     * @param string $publicToken The public token.
      */
     public static function exchangeToken($publicToken)
     {
@@ -69,7 +68,7 @@ class Plaid
     }
 
     /**
-     * Get dat auth
+     * Get auth
      * @param string $accessToken - The access token
      */
     public static function authGet($accessToken)
@@ -121,6 +120,35 @@ class Plaid
                     'client_id' => config('plaid.client_id'),
                     'secret' => config('plaid.secret'),
                     'access_token' => $accessToken
+                ]
+            ]);
+            return json_decode($request->getBody(), true);
+        } catch (RequestException $e) {
+            return json_decode($e->getResponse()->getBody()->getContents(), true);
+        }
+    }
+
+    /**
+     * Get link token.
+     * @method getLinkToken
+     * @param string $publicToken The public token.
+     * @param mixed $userId The user id, email or other identifier.
+     */
+    public static function getLinkToken($accessToken, $userId)
+    {
+        try {
+            $request = self::client()->post('/link/token/create', [
+                'json' => [
+                    'client_id'    => config('plaid.client_id'),
+                    'secret'       => config('plaid.secret'),
+                    'access_token' => $accessToken,
+                    'client_name'  => config('plaid.client_name'),
+				    'webhook'      => config('plaid.webhook'),
+                    'user'         => [
+                        'client_user_id' => '"' . $userId . '"',
+                    ],
+                    'country_codes' => ['US'],
+                    'language'       => 'en',
                 ]
             ]);
             return json_decode($request->getBody(), true);
