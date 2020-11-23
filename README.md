@@ -11,10 +11,10 @@ This package has been built to work with Laravel. It is used for a personal proj
 2) Update your .env file with the following variables:
 
 ```php
-PLAID_CLIENT_ID=58708b7fbdc6a41245f1b02b
-PLAID_SECRET=e61b28ff3bb0c3ce41e6efbf4fe41a
-PLAID_CLIENT_NAME='Budget It Up'
-PLAID_WEBHOOK='https://api.budgetitup.com/plaid/webhooks'
+PLAID_CLIENT_ID=
+PLAID_SECRET=
+PLAID_CLIENT_NAME=''
+PLAID_WEBHOOK=''
 ```
 
 3) Publish the config file:
