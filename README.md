@@ -1,6 +1,6 @@
 # Plaid SDK in PHP
 
-This package has been built to work with Laravel.
+This package has been built to work with Laravel. It is used for a personal project therefore it is missing a number of Plaid API endpoints. If you want to add more, please submit a pull request.
 
 1) Add the package to your Laravel or Lumen project:
 
