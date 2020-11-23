@@ -10,18 +10,21 @@ This package has been built to work with Laravel. It is used for a personal proj
 
 2) Laravel users no need to update your Facades list, it is handled automatically.
 
-```php
-'Plaid' => Jameron\Plaid\PlaidFacade::class,
-```
 
 **NOTE  Lumen only:
 
-If using Lumen add the class alias to `bootstrap\app.php`
+Add the class alias to `bootstrap\app.php`
 
 ```php
     if (!class_exists('Plaid')) {
         class_alias('Plaid\Plaid', 'Plaid');
     }
+```
+
+Also add the facade
+
+```php
+'Plaid' => Jameron\Plaid\PlaidFacade::class,
 ```
 
 3) Add PLAID_CLIENT_ID, PLAID_SECRET to your .env file and then publish (this copies the config file from the vendor directory to the laravel config/ directory) the config file:
@@ -36,13 +39,15 @@ config/plaid.php
 <?php
 
 return [
-    'api_host'  => 'https://development.plaid.com/',
-    'client_id' => env('PLAID_CLIENT_ID'),
-    'secret'    => env('PLAID_SECRET')
+    'api_host'    => 'https://development.plaid.com/',
+    'client_id'   => env('PLAID_CLIENT_ID'),
+    'secret'      => env('PLAID_SECRET'),
+    'client_name' => env('PLAID_CLIENT_NAME'),
+    'webhook'     => env('PLAID_WEBHOOK')
 ];
 ```
 
-If using Lumen add the config to `bootstrap\app.php`
+Add the config to `bootstrap\app.php`
 
 ```php
 $app->configure('plaid');
