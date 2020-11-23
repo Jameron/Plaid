@@ -8,12 +8,14 @@ This package has been built to work with Laravel. It is used for a personal proj
     composer require jameron/plaid
 ```
 
-2) Laravel users no need to update your Facades list, it is handled automatically.
+2) Add PLAID_CLIENT_ID, PLAID_SECRET to your .env file and then publish (this copies the config file from the vendor directory to the laravel config/ directory) the config file:
 
+```php
+    php artisan vendor:publish
+```
 
-**NOTE  Lumen only:
-
-Add the class alias to `bootstrap\app.php`
+**NOTE Remaining steps are for Lumen only, Laravel is setup automatically.
+3) Add the class alias to `bootstrap\app.php`
 
 ```php
     if (!class_exists('Plaid')) {
@@ -21,19 +23,7 @@ Add the class alias to `bootstrap\app.php`
     }
 ```
 
-Also add the facade
-
-```php
-'Plaid' => Jameron\Plaid\PlaidFacade::class,
-```
-
-3) Add PLAID_CLIENT_ID, PLAID_SECRET to your .env file and then publish (this copies the config file from the vendor directory to the laravel config/ directory) the config file:
-
-```php
-    php artisan vendor:publish
-```
-
-config/plaid.php
+4) Create config file config/plaid.php
 
 ```php
 <?php
@@ -47,7 +37,7 @@ return [
 ];
 ```
 
-Add the config to `bootstrap\app.php`
+5) Add the config to `bootstrap\app.php`
 
 ```php
 $app->configure('plaid');
