@@ -8,14 +8,24 @@ This package has been built to work with Laravel. It is used for a personal proj
     composer require jameron/plaid
 ```
 
-2) Add PLAID_CLIENT_ID, PLAID_SECRET to your .env file and then publish (this copies the config file from the vendor directory to the laravel config/ directory) the config file:
+2) Update your .env file with the following variables:
+
+```php
+PLAID_CLIENT_ID=58708b7fbdc6a41245f1b02b
+PLAID_SECRET=e61b28ff3bb0c3ce41e6efbf4fe41a
+PLAID_CLIENT_NAME='Budget It Up'
+PLAID_WEBHOOK='https://api.budgetitup.com/plaid/webhooks'
+```
+
+3) Publish the config file:
 
 ```php
     php artisan vendor:publish
 ```
 
-**NOTE Remaining steps are for Lumen only, Laravel is setup automatically.
-3) Add the class alias to `bootstrap\app.php`
+**NOTE Remaining steps are for Lumen only, Laravel handles the setup automatically.
+
+4) Add the class alias to `bootstrap\app.php`
 
 ```php
     if (!class_exists('Plaid')) {
@@ -23,7 +33,7 @@ This package has been built to work with Laravel. It is used for a personal proj
     }
 ```
 
-4) Create config file config/plaid.php
+5) Create config file config/plaid.php
 
 ```php
 <?php
@@ -37,7 +47,7 @@ return [
 ];
 ```
 
-5) Add the config to `bootstrap\app.php`
+6) Add the config to `bootstrap\app.php`
 
 ```php
 $app->configure('plaid');
