@@ -156,4 +156,49 @@ class Plaid
             return json_decode($e->getResponse()->getBody()->getContents(), true);
         }
     }
+
+    /**
+     * Get item.
+     * @method itemGet
+     * @param string $accessToken The public token.
+     */
+    public static function itemGet($accessToken)
+    {
+        try {
+            $request = self::client()->post('/item/get', [
+                'json' => [
+                    'client_id'    => config('plaid.client_id'),
+                    'secret'       => config('plaid.secret'),
+                    'access_token' => $accessToken,
+                ]
+            ]);
+            return json_decode($request->getBody(), true);
+        } catch (RequestException $e) {
+            return json_decode($e->getResponse()->getBody()->getContents(), true);
+        }
+    }
+
+    /**
+     * Update webhook link.
+     * @method itemWebhookUpdate
+     * @param string $accessToken The public token.
+     * @param string $webhook The webhook.
+     */
+    public static function itemWebhookUpdate($accessToken, $webhook)
+    {
+        try {
+            $request = self::client()->post('/item/webhook/update', [
+                'json' => [
+                    'client_id'    => config('plaid.client_id'),
+                    'secret'       => config('plaid.secret'),
+                    'access_token' => $accessToken,
+                    'webhook'      => $webhook
+                ]
+            ]);
+            return json_decode($request->getBody(), true);
+        } catch (RequestException $e) {
+            return json_decode($e->getResponse()->getBody()->getContents(), true);
+        }
+    }
+
 }
