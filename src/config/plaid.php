@@ -1,6 +1,6 @@
 <?php
 return [
-    'api_host'   => 'https://development.plaid.com/',
+    'api_host'   => env('PLAID_HOST'),
     'client_id'  => env('PLAID_CLIENT_ID'),
     'secret'     => env('PLAID_SECRET'),
     'client_name' => env('PLAID_CLIENT_NAME'),
